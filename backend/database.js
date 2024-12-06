@@ -37,9 +37,9 @@ execute(createUsersTblQuery).then((result) => {
 const createPostsTblQuery = `
     CREATE TABLE IF NOT EXISTS "posts" (
       id SERIAL PRIMARY KEY,
-      "title" VARCHAR(200) NOT NULL,
+      title VARCHAR(200) NOT NULL,
       body TEXT NOT NULL,
-      created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+      created_at TIMESTAMP NOT NULL DEFAULT NOW()
     );`;
 
 execute(createPostsTblQuery).then((result) => {

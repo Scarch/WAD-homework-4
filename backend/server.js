@@ -36,7 +36,7 @@ app.listen(port, () => {
 
 // is used to check whether a user is authenticated
 app.get("/auth/authenticate", async (req, res) => {
-  console.log("authentication request has been arrived");
+  console.log("An authentication request has arrived");
   const token = req.cookies.jwt; // assign the token named jwt to the token const
   //console.log("token " + token);
   let authenticated = false; // a user is not authenticated until proven the opposite
@@ -49,18 +49,18 @@ app.get("/auth/authenticate", async (req, res) => {
         if (err) {
           // not verified, redirect to login page
           console.log(err.message);
-          console.log("token is not verified");
+          console.log("Token is not verified");
           res.send({ authenticated: authenticated }); // authenticated = false
         } else {
           // token exists and it is verified
-          console.log("author is authinticated");
+          console.log("Author is authenticated");
           authenticated = true;
           res.send({ authenticated: authenticated }); // authenticated = true
         }
       });
     } else {
       //applies when the token does not exist
-      console.log("author is not authinticated");
+      console.log("Author is not authenticated");
       res.send({ authenticated: authenticated }); // authenticated = false
     }
   } catch (err) {
@@ -72,7 +72,7 @@ app.get("/auth/authenticate", async (req, res) => {
 // signup a user
 app.post("/auth/signup", async (req, res) => {
   try {
-    console.log("a signup request has arrived");
+    console.log("A signup request has arrived");
     //console.log(req.body);
     const { email, password } = req.body;
 
@@ -149,12 +149,11 @@ app.get("/auth/logout", (req, res) => {
 // Creates a post
 app.post("/api/posts", async (req, res) => {
   try {
-    console.log("a post request has arrived");
     const post = req.body;
     const newpost = await pool.query(
-      "INSERT INTO posttable(title, body, urllink) values ($1, $2, $3)    RETURNING*",
-      [post.title, post.body, post.urllink]
-      // $1, $2, $3 are mapped to the first, second and third element of the passed array (post.title, post.body, post.urllink)
+      "INSERT INTO posttable(title, body) values ($1, $2)    RETURNING*",
+      [post.title, post.body]
+      // $1, $2 are mapped to the first and second element of the passed array (post.title, post.body)
       // The RETURNING keyword in PostgreSQL allows returning a value from the insert or update statement.
       // using "*" after the RETURNING keyword in PostgreSQL, will return everything
     );
@@ -164,10 +163,10 @@ app.post("/api/posts", async (req, res) => {
   }
 });
 
-//
+// Gets all posts
 app.get("/api/posts", async (req, res) => {
   try {
-    console.log("get posts request has arrived");
+    console.log("Get posts request has arrived");
     const posts = await pool.query("SELECT * FROM posttable");
     res.json(posts.rows);
   } catch (err) {
@@ -175,10 +174,11 @@ app.get("/api/posts", async (req, res) => {
   }
 });
 
-// Task 3
+// Gets a specific post
 app.get("/api/posts/:id", async (req, res) => {
+  console.log(req.params);
   try {
-    console.log("get a post with route parameter  request has arrived");
+    console.log("Get post with route parameter request has arrived");
     // The req.params property is an object containing properties mapped to the named route "parameters".
     // For example, if you have the route /posts/:id, then the "id" property is available as req.params.id.
     const { id } = req.params; // assigning all route "parameters" to the id "object"
@@ -196,15 +196,15 @@ app.get("/api/posts/:id", async (req, res) => {
   }
 });
 
-// Task 4
+// Updates a specific post
 app.put("/api/posts/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const post = req.body;
     console.log("update request has arrived");
     const updatepost = await pool.query(
-      "UPDATE posttable SET (title, body, urllink) = ($2, $3, $4) WHERE id = $1",
-      [id, post.title, post.body, post.urllink]
+      "UPDATE posttable SET (title, body) = ($2, $3) WHERE id = $1",
+      [id, post.title, post.body]
     );
     res.json(updatepost);
   } catch (err) {
@@ -212,7 +212,7 @@ app.put("/api/posts/:id", async (req, res) => {
   }
 });
 
-// Task 5
+// Deletes a specific post
 app.delete("/api/posts/:id", async (req, res) => {
   try {
     const { id } = req.params;
