@@ -36,8 +36,8 @@ export default {
             })
                 .then((response) => {
                     console.log(response.data);
-                    // redirect to /allposts view
-                    this.$router.push("/api/allposts");
+                    // redirect to home view
+                    this.$router.push("/");
                 })
                 .catch((e) => {
                     console.log(e);
