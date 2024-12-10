@@ -1,12 +1,16 @@
 <template>
     <div class="form">
-        <h3>LogIn</h3>
-        <label for="email">Email</label>
-        <input type="email" name="email" required v-model="email">
-        <label for="password">Password</label>
-        <input type="password" name="password" required v-model="password">
+        <div class="email"> 
+            <label for="email">Email</label>
+            <input type="email" name="email" required v-model="email">
+        </div>
+        <div class="password"> 
+            <label for="password">Password</label>
+            <input type="password" name="password" required v-model="password">
+        </div>    
         <div class="container">
-            <button @click="LogIn" class="center">LogIn</button>
+            <button @click="LogIn" class="center">LogIn</button> 
+            <p>OR</p>
             <button @click='this.$router.push("/signup")' class="center">Signup</button>
         </div>
     </div>
@@ -54,3 +58,56 @@ export default {
 }
 
 </script>
+
+<style scoped>
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: 3% auto;
+    padding: 3%;
+    width: 50%;
+    background-color: rgba(231, 230, 230, 0.722);
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    height: fit-content;
+}
+
+.container{
+    display: flex;
+    align-items:flex-end;
+    justify-content: space-around;
+    width: 100%;
+    padding: 3%;
+}
+
+.email{
+    display: flex;
+    justify-content: center;
+}
+
+.email > label{
+    margin: 4%;
+    justify-content: center;
+}
+
+.email > input{
+    font-size: 16px;
+}
+
+.password{
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.password > label{
+    margin: 4%;
+    justify-content: end;
+}
+
+.password > input{
+    font-size: 16px;
+}
+</style>

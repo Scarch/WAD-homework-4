@@ -15,8 +15,10 @@
         </div>
       </ul>
     </div>
-    <button v-if="authResult" @click="routeAddPost()">Add post</button>
-    <button v-if="authResult" @click="deleteAllPosts()">Delete all</button>
+    <div class="bottomBtns">
+      <button v-if="authResult" @click="routeAddPost()">Add post</button>
+      <button v-if="authResult" @click="deleteAllPosts()">Delete all</button>
+    </div>
   </div>
 </template>
 
@@ -74,3 +76,38 @@ export default {
   },
 };
 </script>
+
+<style>
+
+span{
+  background-color: rgba(231, 230, 230, 0.722);
+}
+
+.container{
+  margin: 1%;
+}
+
+button{
+  width: 30%;
+  min-width: 50px;
+  max-width: 250px;
+  padding: 10px;
+  background-color: rgb(19, 45, 196);
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: rgb(9, 32, 163);
+}
+
+.bottomBtns{
+  margin: 10% 25%;
+  display: flex;
+  justify-content: space-between;
+}
+
+</style>
