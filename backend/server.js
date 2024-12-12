@@ -135,7 +135,7 @@ app.post("/api/posts", async (req, res) => {
   try {
     const post = req.body;
     const newpost = await pool.query(
-      "INSERT INTO posttable(title, body) values ($1, $2)    RETURNING*",
+      "INSERT INTO posts(title, body) values ($1, $2)    RETURNING*",
       [post.title, post.body]
     );
     res.json(newpost);
@@ -148,7 +148,7 @@ app.post("/api/posts", async (req, res) => {
 app.get("/api/posts", async (req, res) => {
   try {
     console.log("Get posts request has arrived");
-    const posts = await pool.query("SELECT * FROM posttable");
+    const posts = await pool.query("SELECT * FROM posts");
     res.json(posts.rows);
   } catch (err) {
     console.error(err.message);
@@ -161,7 +161,7 @@ app.get("/api/posts/:id", async (req, res) => {
   try {
     console.log("Get post with route parameter request has arrived");
     const { id } = req.params; // assigning all route "parameters" to the id "object"
-    const posts = await pool.query("SELECT * FROM posttable WHERE id = $1", [
+    const posts = await pool.query("SELECT * FROM posts WHERE id = $1", [
       id,
     ]);
     res.json(posts.rows[0]); // Accessing the first row of the returned table (since we technically get a table from the database, which we know only has one row)
@@ -177,7 +177,7 @@ app.put("/api/posts/:id", async (req, res) => {
     const post = req.body;
     console.log("Update post request has arrived");
     const updatepost = await pool.query(
-      "UPDATE posttable SET (title, body) = ($2, $3) WHERE id = $1",
+      "UPDATE posts SET (title, body) = ($2, $3) WHERE id = $1",
       [id, post.title, post.body]
     );
     res.json(updatepost);
@@ -191,7 +191,7 @@ app.delete("/api/posts/:id", async (req, res) => {
   try {
     const { id } = req.params;
     console.log("Delete post request has arrived");
-    const deletepost = await pool.query("DELETE FROM posttable WHERE id = $1", [
+    const deletepost = await pool.query("DELETE FROM posts WHERE id = $1", [
       id,
     ]);
     res.json(deletepost);
@@ -204,7 +204,7 @@ app.delete("/api/posts/:id", async (req, res) => {
 app.delete("/api/posts/", async (req, res) => {
   try {
     console.log("Delete all posts request has arrived");
-    const deleteAllPosts = await pool.query("TRUNCATE posttable");
+    const deleteAllPosts = await pool.query("TRUNCATE posts");
     res.json(deleteAllPosts);
   } catch (err) {
     console.error(err.message);
