@@ -5,9 +5,9 @@
             <label for="title">Title: </label>
             <input name="type" type="text" id="title" required v-model="post.title" />
             <label for="body">Body: </label>
-            <input name="body" type="text" id="body" required v-model="post.body" />
+            <textarea name="body" type="text" id="body" required v-model="post.body" />
         </div>
-        <div>
+        <div class="Buttons">
             <button @click="updatePost" class="updatePost">Update Post</button>
             <button @click="deletePost" class="deletePost">Delete Post</button>
         </div>
@@ -81,6 +81,57 @@ export default {
 </script>
 
 <style scoped>
+#form {
+    max-width: 540px;
+    margin: 100px auto;
+    border-radius: 25px;
+    padding: 40px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(231, 230, 230, 0.722);
+}
 
+label {
+    display: inline-block;
+    margin: 25px 0 15px;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
 
+input, textarea {
+    display: block;
+    padding: 10px 10px;
+    width: 85%;
+    align-self: center;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 10px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.Buttons {
+    max-width: 540px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+
+@media (max-width: 768px) {
+    #form {
+        width: 80%;
+    }
+
+    .Buttons {
+        font-size: 0.8em;
+        width: 60%;
+        gap: 30px;
+    }
+}
 </style>

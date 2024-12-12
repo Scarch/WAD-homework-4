@@ -10,14 +10,14 @@
           <!-- / We are putting an anchor for each post, when we click on it, we will be directed to the specific post view (/api/posts/{id}) /  -->
           <a class="singlepost" @click="routePost(post.id)">
             <span class="title"> <b>Title:</b> {{ post.title }} </span><br />
-            <span class="body"> <b>Body:</b> {{ post.body }} </span> <br />
+            <span class="body"> {{ post.body }} </span> <br />
           </a>
         </div>
       </ul>
     </div>
     <div class="bottomBtns">
-      <button v-if="authResult" @click="routeAddPost()">Add post</button>
-      <button v-if="authResult" @click="deleteAllPosts()">Delete all</button>
+      <button v-if="authResult" @click="routeAddPost()">Add Post</button>
+      <button v-if="authResult" @click="deleteAllPosts()">Delete All</button>
     </div>
   </div>
 </template>
@@ -78,13 +78,31 @@ export default {
 </script>
 
 <style>
+.item {
+  display: flex;
+  justify-content: center;
+}
 
-span{
+/** see ei ole keskel hetkel */
+.singlepost {
+  width: 100%;
+  max-width: 540px;
+  margin: 25px auto;
+  border-radius: 25px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
   background-color: rgba(231, 230, 230, 0.722);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.body {
+  text-align: left;
 }
 
 .container{
-  margin: 1%;
+  margin: 20px;
 }
 
 button{
@@ -105,9 +123,21 @@ button:hover{
 }
 
 .bottomBtns{
-  margin: 10% 25%;
+  margin: 10px auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 80px;
 }
 
+@media (max-width: 768px) {
+  .singlepost {
+    width: 80%;
+  }
+
+  .Buttons {
+    font-size: 0.8em;
+    width: 60%;
+    gap: 30px;
+  }
+}
 </style>
