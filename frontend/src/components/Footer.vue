@@ -32,13 +32,11 @@ export default {
 }
 
 footer {
-    margin-top: auto;
     width: 100%;
-    padding: 30px;
     text-align: center;
     background-color: rgba(238, 238, 238, 0.722);
     border-radius: 8px;
-    padding: 10px;
+    padding: 5px;
     line-height: 1.5;
 }
 </style>

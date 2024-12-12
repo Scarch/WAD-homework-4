@@ -65,25 +65,21 @@ app.get("/auth/authenticate", async (req, res) => {
   }
 });
 
-// signup a user
+// Sign up a user
 app.post("/auth/signup", async (req, res) => {
   try {
     console.log("A signup request has arrived");
-    //console.log(req.body);
     const { email, password } = req.body;
 
-    const salt = await bcrypt.genSalt(); //  generates the salt, i.e., a random string
-    const bcryptPassword = await bcrypt.hash(password, salt); // hash the password and the salt
+    const salt = await bcrypt.genSalt(); // Generates the salt, i.e. a random string
+    const bcryptPassword = await bcrypt.hash(password, salt); // Hash the password and the salt
     const authUser = await pool.query(
-      // insert the user and the hashed password into the database
+      // Inserting the user and the hashed password into the database
       "INSERT INTO users(email, password) values ($1, $2) RETURNING*",
       [email, bcryptPassword]
     );
     console.log(authUser.rows[0].id);
-    const token = await generateJWT(authUser.rows[0].id); // generates a JWT by taking the user id as an input (payload)
-    //console.log(token);
-    //res.cookie("isAuthorized", true, { maxAge: 1000 * 60, httpOnly: true });
-    //res.cookie('jwt', token, { maxAge: 6000000, httpOnly: true });
+    const token = await generateJWT(authUser.rows[0].id); // Generates a JWT by taking the user id as an input (payload)
     res
       .status(201)
       .cookie("jwt", token, { maxAge: 6000000, httpOnly: true })
@@ -118,7 +114,7 @@ app.post("/auth/login", async (req, res) => {
   }
 });
 
-// Logging out - we need to delete our JWT cookie/token
+// Logging out - we need to delete our JWT
 app.get("/auth/logout", (req, res) => {
   console.log("Delete JWT request arrived");
   res.status(202).clearCookie("jwt").json({ Msg: "cookie cleared" }).send;
@@ -160,10 +156,8 @@ app.get("/api/posts/:id", async (req, res) => {
   console.log(req.params);
   try {
     console.log("Get post with route parameter request has arrived");
-    const { id } = req.params; // assigning all route "parameters" to the id "object"
-    const posts = await pool.query("SELECT * FROM posts WHERE id = $1", [
-      id,
-    ]);
+    const { id } = req.params; // Assigning all route "parameters" to the id "object"
+    const posts = await pool.query("SELECT * FROM posts WHERE id = $1", [id]);
     res.json(posts.rows[0]); // Accessing the first row of the returned table (since we technically get a table from the database, which we know only has one row)
   } catch (err) {
     console.error(err.message);

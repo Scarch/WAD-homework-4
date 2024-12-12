@@ -1,6 +1,6 @@
 <template>
     <div class="form">
-        <div class="email"> 
+        <div class="email">
             <label for="email">Email</label>
             <input type="email" name="email" required v-model="email">
         </div>
@@ -30,20 +30,20 @@ export default {
                 email: this.email,
                 password: this.password
             };
-            // using Fetch - post method - send an HTTP post request to the specified URI with the defined body
+            // Using Fetch - post method - send an HTTP post request to the specified URI with the defined body
+            // Post creation time will be automatically assigned
             fetch("http://localhost:3000/auth/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                credentials: 'include', //  Don't forget to specify this if you need cookies
+                credentials: 'include', //  Necessary for cookies to work
                 body: JSON.stringify(data),
             })
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data);
                     this.$router.push("/");
-                    //location.assign("/");
                 })
                 .catch((e) => {
                     console.log(e);
@@ -55,7 +55,6 @@ export default {
 </script>
 
 <style scoped>
-
 .form {
     display: flex;
     flex-direction: column;
@@ -69,40 +68,40 @@ export default {
     height: fit-content;
 }
 
-.container{
+.container {
     display: flex;
-    align-items:flex-end;
+    align-items: flex-end;
     justify-content: space-around;
     width: 100%;
     padding: 3%;
 }
 
-.email{
+.email {
     display: flex;
     justify-content: center;
 }
 
-.email > label{
+.email>label {
     margin: 4%;
     justify-content: center;
 }
 
-.email > input{
+.email>input {
     font-size: 16px;
 }
 
-.password{
+.password {
     padding: 5%;
     display: flex;
     justify-content: center;
 }
 
-.password > label{
+.password>label {
     margin: 4%;
     justify-content: end;
 }
 
-.password > input{
+.password>input {
     font-size: 16px;
 }
 </style>
