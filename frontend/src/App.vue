@@ -26,6 +26,12 @@ export default {
   font-family: 'Trebuchet MS', sans-serif;
 }
 
+Fragment {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

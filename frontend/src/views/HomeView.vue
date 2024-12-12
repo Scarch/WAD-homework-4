@@ -9,7 +9,8 @@
         <div class="item" v-for="post in posts" :key="post.id">
           <!-- / We are putting an anchor for each post, when we click on it, we will be directed to the specific post view (/api/posts/{id}) /  -->
           <a class="singlepost" @click="routePost(post.id)">
-            <span class="title"> <b>Title:</b> {{ post.title }} </span><br />
+            <span class="title"> <b>{{ post.title }}</b> <span class="timestamp">{{ formatDate(post.created_at)
+                }}</span></span><br />
             <span class="body"> {{ post.body }} </span> <br />
           </a>
         </div>
@@ -34,6 +35,9 @@ export default {
     }
   },
   methods: {
+    formatDate(datetime) {
+      return new Date(datetime).toLocaleString();
+    },
     deleteAllPosts() {
       fetch(`http://localhost:3000/api/posts/`, {
         method: "DELETE",
@@ -78,6 +82,17 @@ export default {
 </script>
 
 <style>
+.timestamp {
+  float: right;
+  font-size: medium;
+}
+
+.title {
+  font-size: larger;
+  text-align: left;
+  margin-bottom: 30px
+}
+
 .item {
   display: flex;
   justify-content: center;
@@ -101,11 +116,11 @@ export default {
   text-align: left;
 }
 
-.container{
+.container {
   margin: 20px;
 }
 
-button{
+button {
   width: 30%;
   min-width: 50px;
   max-width: 250px;
@@ -118,11 +133,11 @@ button{
   cursor: pointer;
 }
 
-button:hover{
+button:hover {
   background-color: rgb(9, 32, 163);
 }
 
-.bottomBtns{
+.bottomBtns {
   margin: 10px auto;
   display: flex;
   justify-content: center;
