@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="container">
-      <button v-if="authResult" @click="Logout" class="center">Logout</button>
+      <button v-if="authResult" @click="Logout" class="center">Log Out</button>
     </div>
     <div id="post-list">
       <h1>All Posts</h1>
@@ -46,10 +46,10 @@ export default {
       this.posts = [] // Clearing posts on the page as well
     },
     routePost(id) {
-      this.$router.push("/api/posts/" + id)
+      this.$router.push("/posts/" + id)
     },
     routeAddPost() {
-      this.$router.push("/api/posts/")
+      this.$router.push("/addpost")
     },
     fetchPosts() {
       fetch(`http://localhost:3000/api/posts/`)

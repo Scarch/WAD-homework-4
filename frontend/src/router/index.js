@@ -32,7 +32,7 @@ const routes = [
   },
 
   {
-    path: "/api/posts",
+    path: "/addpost",
     name: "AddPost",
     component: AddPost,
     beforeEnter: async (to, from, next) => {
@@ -45,7 +45,7 @@ const routes = [
     },
   },
   {
-    path: "/api/posts/:id",
+    path: "/posts/:id",
     name: "Post",
     component: Post,
     beforeEnter: async (to, from, next) => {

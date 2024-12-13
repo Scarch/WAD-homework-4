@@ -1,12 +1,14 @@
 <template>
     <div class="form">
-        <div class="email">
-            <label for="email">Email</label>
-            <input type="email" name="email" required v-model="email">
-        </div>
-        <div class="password">
-            <label for="password">Password</label>
-            <input type="password" name="password" required v-model="password">
+        <div class="inputs">
+            <div class="email">
+                <label for="email">Email</label>
+                <input type="email" name="email" required v-model="email">
+            </div>
+            <div class="password">
+                <label for="password">Password</label>
+                <input type="password" name="password" required v-model="password">
+            </div>
         </div>
         <div class="container">
             <button @click="LogIn" class="center">Log In</button>
@@ -27,6 +29,7 @@ export default {
         }
     },
     methods: {
+
 
 
         LogIn() {
@@ -60,6 +63,26 @@ export default {
 </script>
 
 <style scoped>
+.inputs {
+    display: table;
+    border-spacing: 10px;
+    font-size: large;
+}
+
+.email,
+.password {
+    display: table-row;
+}
+
+label {
+    display: table-cell;
+    padding-right: 10px;
+}
+
+input {
+    display: table-cell;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -82,7 +105,6 @@ export default {
 }
 
 .email {
-    display: flex;
     justify-content: center;
 }
 
@@ -97,7 +119,6 @@ export default {
 
 .password {
     padding: 5%;
-    display: flex;
     justify-content: center;
 }
 

@@ -1,14 +1,16 @@
 <template>
     <div class="form">
-        <div class="email">
-            <label for="email">Email</label>
-            <input type="email" name="email" required v-model="email">
+        <div class="inputs">
+            <div class="email">
+                <label for="email">Email</label>
+                <input type="email" name="email" required v-model="email">
+            </div>
+            <div class="password">
+                <label for="password">Password</label>
+                <input type="password" name="password" required v-model="password">
+            </div>
         </div>
-        <div class="password">
-            <label for="password">Password</label>
-            <input type="password" name="password" required v-model="password">
-        </div>
-        <button @click="SignUp" class="SignUp">SignUp</button>
+        <button @click="SignUp" class="SignUp">Sign Up</button>
     </div>
 </template>
 
@@ -55,6 +57,27 @@ export default {
 </script>
 
 <style scoped>
+.inputs {
+    display: table;
+    border-spacing: 10px;
+    padding-bottom: 50px;
+    font-size: large;
+}
+
+.email,
+.password {
+    display: table-row;
+}
+
+label {
+    display: table-cell;
+    padding-right: 10px;
+}
+
+input {
+    display: table-cell;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -77,7 +100,6 @@ export default {
 }
 
 .email {
-    display: flex;
     justify-content: center;
 }
 
@@ -92,7 +114,6 @@ export default {
 
 .password {
     padding: 5%;
-    display: flex;
     justify-content: center;
 }
 
