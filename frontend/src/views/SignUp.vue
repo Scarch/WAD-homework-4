@@ -57,6 +57,7 @@ export default {
 </script>
 
 <style scoped>
+/* Aligning input fields */
 .inputs {
     display: table;
     border-spacing: 10px;
@@ -64,18 +65,33 @@ export default {
     font-size: large;
 }
 
+/* Aligning input fields */
 .email,
 .password {
     display: table-row;
 }
 
+/* Aligning input fields */
 label {
     display: table-cell;
     padding-right: 10px;
 }
 
+/* Aligning input fields */
 input {
     display: table-cell;
+}
+
+/* Smaller screen compatibility */
+@media (max-width: 550px) {
+    .inputs {
+        font-size: smaller;
+    }
+
+    input {
+        width: 100%;
+    }
+
 }
 
 .form {
@@ -108,9 +124,6 @@ input {
     justify-content: center;
 }
 
-.email>input {
-    font-size: 16px;
-}
 
 .password {
     padding: 5%;
@@ -120,9 +133,5 @@ input {
 .password>label {
     margin: 4%;
     justify-content: end;
-}
-
-.password>input {
-    font-size: 16px;
 }
 </style>
