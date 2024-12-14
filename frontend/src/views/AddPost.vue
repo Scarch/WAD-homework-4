@@ -53,15 +53,14 @@ export default {
 <style scoped>
 
 .form {
+    max-width: 540px;
+    margin: 6% auto;
+    border-radius: 25px;
+    padding: 40px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    margin: 3% auto;
-    padding: 3%;
-    width: 50%;
     background-color: rgba(231, 230, 230, 0.722);
-    justify-content: center;
-    align-items: center;
-    border-radius: 25px;
 }
 
 h3{
@@ -75,15 +74,23 @@ h3{
 }
 
 label{
-    margin: 3%;
-    padding: 3%;
+    display: inline-block;
+    margin: 25px 0 15px;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
 }
 
-input{
-    font-size: 16px;
-    margin: 3%;
-    padding: 3%;
-    width: auto;
+input,
+textarea {
+    display: block;
+    padding: 10px 10px;
+    width: 85%;
+    align-self: center;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 10px;
 }
 
 #body{
@@ -95,7 +102,24 @@ input{
 }
 
 button{
-    margin: 2%;
+    max-width: 540px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
 }
 
+textarea {
+    resize: vertical;
+}
+
+@media (max-width: 768px) {
+    .form {
+        width: 70%;
+    }
+
+    button {
+        font-size: 0.8em;
+        width: 100%;
+    }
+}
 </style>

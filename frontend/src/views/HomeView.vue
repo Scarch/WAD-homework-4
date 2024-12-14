@@ -4,7 +4,7 @@
       <button v-if="authResult" @click="Logout" class="center">Log Out</button>
     </div>
     <div id="post-list">
-      <h1>All Posts</h1>
+      <h3>All Posts</h3>
       <ul>
         <div class="item" v-for="post in posts" :key="post.id">
           <!-- / We are putting an anchor for each post, when we click on it, we will be directed to the specific post view (/api/posts/{id}) /  -->
@@ -82,6 +82,11 @@ export default {
 </script>
 
 <style>
+/* Centering the posts */
+ul {
+  padding: 0%;
+}
+
 .timestamp {
   float: right;
   font-size: medium;
@@ -94,11 +99,13 @@ export default {
 }
 
 .item {
+  position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
-/** see ei ole keskel hetkel */
 .singlepost {
   width: 100%;
   max-width: 540px;
@@ -107,10 +114,12 @@ export default {
   padding: 30px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   background-color: rgba(231, 230, 230, 0.722);
   cursor: pointer;
   box-sizing: border-box;
 }
+
 
 .body {
   text-align: left;

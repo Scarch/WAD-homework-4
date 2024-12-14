@@ -5,11 +5,11 @@
             <label for="title">Title: </label>
             <input name="type" type="text" id="title" required v-model="post.title" />
             <label for="body">Body: </label>
-            <textarea name="body" type="text" id="body" required v-model="post.body" />
-        </div>
-        <div class="Buttons">
-            <button @click="updatePost" class="updatePost">Update Post</button>
-            <button @click="deletePost" class="deletePost">Delete Post</button>
+            <textarea name="body" type="text" id="body" required v-model="post.body" rows="5" cols="40"/>
+            <div class="Buttons">
+                <button @click="updatePost" class="updatePost">Update Post</button>
+                <button @click="deletePost" class="deletePost">Delete Post</button>
+            </div>
         </div>
     </div>
 </template>
@@ -81,8 +81,9 @@ export default {
 
 <style scoped>
 #form {
+    height: 100%;
     max-width: 540px;
-    margin: 100px auto;
+    margin: 6% auto;
     border-radius: 25px;
     padding: 40px;
     margin-bottom: 30px;
@@ -116,8 +117,9 @@ textarea {
 }
 
 .Buttons {
+    width: 100%;
     max-width: 540px;
-    margin: 10px auto;
+    margin: 20px auto;
     display: flex;
     justify-content: center;
     gap: 80px;
@@ -125,12 +127,12 @@ textarea {
 
 @media (max-width: 768px) {
     #form {
-        width: 80%;
+        width: 70%;
     }
 
     .Buttons {
         font-size: 0.8em;
-        width: 60%;
+        width: 100%;
         gap: 30px;
     }
 }

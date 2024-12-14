@@ -86,32 +86,40 @@ label {
 input {
     display: table-cell;
     font-size: large;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: black;
+    padding: 3.5%;
 }
 
 /* Smaller screen compatibility */
 @media (max-width: 550px) {
-    .inputs {
-        font-size: smaller;
+    .form {
+        width: 70%;
     }
 
     input {
         width: 100%;
-        font-size: smaller;
+        font-size: small;
+    }
+
+    button {
+        font-size: 0.8em;
+        width: 40%;
     }
 
 }
 
 .form {
+    max-width: 540px;
+    margin: 100px auto;
+    border-radius: 25px;
+    padding: 40px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    margin: 3% auto;
-    padding: 3%;
-    width: 50%;
-    background-color: rgba(231, 230, 230, 0.722);
-    justify-content: center;
     align-items: center;
-    border-radius: 25px;
-    height: fit-content;
+    background-color: rgba(231, 230, 230, 0.722);
 }
 
 .container {
