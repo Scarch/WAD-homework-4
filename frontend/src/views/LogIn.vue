@@ -86,10 +86,11 @@ label {
 input {
     display: table-cell;
     font-size: large;
+    border: none;
     border-radius: 10px;
     border-width: 1px;
     border-color: black;
-    padding: 3.5%;
+    padding: 10px 10px;
 }
 
 /* Smaller screen compatibility */
@@ -119,7 +120,7 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(231, 230, 230, 0.722);
+    background-color: rgba(231, 230, 230, 0.825);
 }
 
 .container {

@@ -84,7 +84,8 @@ input {
     border-width: 1px;
     border-color: black;
     font-size: large;
-    padding: 3.5%;
+    border: none;
+    padding: 10px 10px;
 }
 
 /* Smaller screen compatibility */
@@ -115,7 +116,7 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(231, 230, 230, 0.722);
+    background-color: rgba(231, 230, 230, 0.825);
 }
 
 .container {

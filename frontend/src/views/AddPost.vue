@@ -60,7 +60,7 @@ export default {
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    background-color: rgba(231, 230, 230, 0.722);
+    background-color: rgba(230, 230, 231, 0.825);
 }
 
 h3{
