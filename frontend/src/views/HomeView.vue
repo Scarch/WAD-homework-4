@@ -74,9 +74,8 @@ export default {
     },
   },
   mounted() {
-    // call fetchPosts() when this element (AllPosts) mounts 
+    // Call fetchPosts() when this element (HomeView) mounts 
     this.fetchPosts();
-    console.log("mounted");
   },
 };
 </script>
@@ -123,8 +122,10 @@ ul {
 
 .body {
   text-align: left;
-  overflow-wrap: break-word; /* Break long words */
-  word-wrap: break-word; /* Support for older browsers */
+  overflow-wrap: break-word;
+  /* Break long words */
+  word-wrap: break-word;
+  /* Support for older browsers */
 }
 
 .container {

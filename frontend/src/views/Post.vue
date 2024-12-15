@@ -5,7 +5,7 @@
             <label for="title">Title: </label>
             <input name="type" type="text" id="title" required v-model="post.title" />
             <label for="body">Body: </label>
-            <textarea name="body" type="text" id="body" required v-model="post.body" rows="5" cols="40"/>
+            <textarea name="body" type="text" id="body" required v-model="post.body" rows="5" cols="40" />
             <div class="Buttons">
                 <button @click="updatePost" class="updatePost">Update Post</button>
                 <button @click="deletePost" class="deletePost">Delete Post</button>
@@ -29,14 +29,14 @@ export default {
     },
     methods: {
         fetchAPost(id) {
-            // Fetch one post with the specied id (id)
+            // Fetch one post with the specied id
             fetch(`http://localhost:3000/api/posts/${id}`)
                 .then((response) => response.json())
                 .then((data) => (this.post = data))
                 .catch((err) => console.log(err.message));
         },
         updatePost() {
-            // Using Fetch - put method - updates a specific post based on the passed id and the specified body
+            // Using Fetch - put method - updates a specific post based on the passed id and the specified body (different from the actual post body)
             fetch(`http://localhost:3000/api/posts/${this.post.id}`, {
                 method: "PUT",
                 headers: {

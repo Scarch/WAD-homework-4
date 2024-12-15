@@ -11,14 +11,7 @@
 
 <script>
 export default {
-    name: 'Footer',
-
-    methods: {
-
-    },
-    watch: {
-
-    },
+    name: 'Footer'
 };
 </script>
 

@@ -11,7 +11,7 @@ export default {
       })
       .catch((e) => {
         console.log(e);
-        console.log("error logout");
+        console.log("ERROR ON LOGOUT");
       });
     return this.user.authenticated;
   },

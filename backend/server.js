@@ -90,6 +90,7 @@ app.post("/auth/signup", async (req, res) => {
   }
 });
 
+// Logging in
 app.post("/auth/login", async (req, res) => {
   try {
     console.log("A login request has arrived");

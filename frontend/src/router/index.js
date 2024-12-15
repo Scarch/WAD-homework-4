@@ -67,7 +67,7 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
   {
-    //will route to AllPosts view if none of the previous routes apply
+    // Routing to login page if no other routes match
     path: "/:catchAll(.*)",
     name: "LogIn",
     component: LogIn,

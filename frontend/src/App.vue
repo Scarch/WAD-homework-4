@@ -26,6 +26,7 @@ export default {
   font-family: 'Trebuchet MS', sans-serif;
 }
 
+/* Necessary for the footer to be at the bottom of the page */
 Fragment {
   min-height: 100vh;
   display: flex;
